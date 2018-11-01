@@ -12,14 +12,21 @@ import org.springframework.util.Assert;
  * @create: 2018-11-01 22:12
  **/
 public class TestIoc {
-
+    ApplicationContext context =
+            new ClassPathXmlApplicationContext("applicationContext.xml");
     @Test
     public void testUser(){
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
+
         User user = (User)context.getBean("user");
         Assert.state(user!=null);
         System.out.println(user);
         user.add();
+    }
+
+    @Test
+    public void testFactory(){
+        User anoUser = (User)context.getBean("anoUser");
+        System.out.println(anoUser);
+        anoUser.add();
     }
 }
