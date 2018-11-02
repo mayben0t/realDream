@@ -29,4 +29,11 @@ public class TestIoc {
         System.out.println(anoUser);
         anoUser.add();
     }
+
+    @Test
+    public void testFactoryThird(){
+        User thirdUser = (User)context.getBean("thirdUser");
+        System.out.println(thirdUser);
+        thirdUser.add();
+    }
 }

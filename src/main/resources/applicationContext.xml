@@ -3,8 +3,23 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- ioc -->
+
+    <!-- bean常用属性：
+    1.id ：名称（根据id值得到配置对象 可以为任意名 不能包含特殊符号，如_ *）
+    2.class ：创建对象所在类的全路径名
+    3.name ：功能和id属性一样的  id属性不能包含特殊符号 但是name里面可以
+    4.scope ： singleton单例（默认）   prototype 多例
+            request:创建对象把对象放到request域里面（后面同理）    session   globalSession
+    -->
+
+    <!-- ioc (最常用，下面两种了解即可)-->
     <bean id="user" class="third.world.demo.bottom.principle.spring.ioc.User"></bean>
 
+    <!-- 静态工厂 -->
     <bean id="anoUser" class="third.world.demo.bottom.principle.spring.ioc.UserFactory" factory-method="getBean"></bean>
+
+    <!--实例工厂创建对象-->
+    <!-- 创建工厂对象-->
+    <bean id = "beanFactory" class="third.world.demo.bottom.principle.spring.ioc.UserFactoryIn"></bean>
+    <bean id="thirdUser" factory-bean="beanFactory" factory-method="getBean"></bean>
 </beans>
