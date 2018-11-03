@@ -25,7 +25,7 @@
         <!-- error ch.qos.logback.core.rolling.TimeBasedRolligPolicy -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 路径 -->
-            <fileNamePattern>D:/thirdWorld/log/info/info.%d.log</fileNamePattern>
+            <fileNamePattern>D:/log/thirdWorld/info/info.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
@@ -42,7 +42,7 @@
         <!-- error ch.qos.logback.core.rolling.TimeBasedRolligPolicy -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 路径 -->
-            <fileNamePattern>D:/thirdWorld/log/error/error.%d.log</fileNamePattern>
+            <fileNamePattern>D:/log/thirdWorld/error/error.%d.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 

@@ -9,7 +9,7 @@
 
 ```
 重点：
-    日志文件放在:D:/thirdWorld/log文件夹下
+    日志文件放在:D:/log/thirdWorld/文件夹下
 ```
 
 > 合作人
