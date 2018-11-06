@@ -27,4 +27,38 @@
     <bean id="person" class="third.world.demo.bottom.principle.spring.ioc.property.Person">
         <constructor-arg value="Loki"></constructor-arg>
     </bean>
+
+    <bean id="diff" class="third.world.demo.bottom.principle.spring.ioc.Difficult.Diff">
+        <property name="arr">
+            <array>
+                <value>测试1</value>
+                <value>测试2</value>
+                <value>测试3</value>
+            </array>
+        </property>
+
+
+        <property name="list">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="index1" value="1"></entry>
+                <entry key="index2" value="2"></entry>
+                <entry key="index3" value="3"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="driver">111111112</prop>
+                <prop key="driver2">111111113</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
