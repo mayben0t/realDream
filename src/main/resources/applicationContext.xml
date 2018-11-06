@@ -22,4 +22,9 @@
     <!-- 创建工厂对象-->
     <bean id = "beanFactory" class="third.world.demo.bottom.principle.spring.ioc.UserFactoryIn"></bean>
     <bean id="thirdUser" factory-bean="beanFactory" factory-method="getBean"></bean>
+
+    <!-- 构造函数实现属性注入 -->
+    <bean id="person" class="third.world.demo.bottom.principle.spring.ioc.property.Person">
+        <constructor-arg value="Loki"></constructor-arg>
+    </bean>
 </beans>
