@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="third.world.demo.mapper.UserMapper">
+
+
+    <insert id="insert">
+        insert into user(login_name,login_password,name,ip)
+        VALUES (#{user.loginName,jdbcType=VARCHAR},#{user.loginPassword,jdbcType=VARCHAR},#{user.name,jdbcType=VARCHAR},#{user.ip,jdbcType=VARCHAR})
+    </insert>
+
+
+</mapper>

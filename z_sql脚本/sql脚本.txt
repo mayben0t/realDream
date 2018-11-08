@@ -1,0 +1,12 @@
+create database thirdworld  DEFAULT CHARSET utf8;
+
+use thirdworld;
+
+create table user (
+	id int auto_increment,  #id  主键
+	login_name varchar(40) not null,  #登陆名
+	login_password varchar(40) not null,
+	name varchar(40),
+	ip varchar(6),
+	primary key(id)
+)engine=Innodb DEFAULT CHARSET=utf8 AUTO_INCREMENT =1;
