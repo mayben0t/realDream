@@ -6,18 +6,18 @@ package third.world.demo.model;
  * @Date 2018/11/8
  **/
 public class User {
-    private Integer id;
+    private Integer userId;
     private String loginName;
     private String loginPassword;
     private String name;
     private String ip;
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getLoginName() {

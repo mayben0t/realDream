@@ -10,5 +10,13 @@
         VALUES (#{user.loginName,jdbcType=VARCHAR},#{user.loginPassword,jdbcType=VARCHAR},#{user.name,jdbcType=VARCHAR},#{user.ip,jdbcType=VARCHAR})
     </insert>
 
+    <select id="select" resultType="third.world.demo.model.User">
+          select
+              *
+            from t_user
+            where
+              userId=#{userId}
+    </select>
+
 
 </mapper>

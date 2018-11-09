@@ -1,12 +1,15 @@
 package third.world.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import third.world.demo.dto.ResultTO;
 import third.world.demo.model.User;
 import third.world.demo.service.UserService;
+
+import java.util.List;
 
 /**
  * @Author WangXiao
@@ -31,5 +34,12 @@ public class UserController {
         return result;
     }
 
+
+    @GetMapping
+    public ResultTO select(int userId){
+        ResultTO<List<User>> result = new ResultTO();
+        result.setResult(userService.select(userId));
+        return result;
+    }
 
 }

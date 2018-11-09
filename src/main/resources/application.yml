@@ -1,12 +1,25 @@
 spring:
   profiles:
     active: prod
-
-
   datasource:
-    url: jdbc:mysql://localhost:3306/thirdworld
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    # 使用druid数据源
-    type: com.alibaba.druid.pool.DruidDataSource
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+mybatis:
+  mapper-locations: classpath:mybatis/*Mapper.xml
+  type-aliases-package: thrid.world.demo
+#logging:
+#  pattern:
+#    console:  "%d - %msg%n"
+##  path: E:/spring-boot/demo/src/main/resources/conf/log/
+#  file: E:/spring-boot/demo/src/main/resources/conf/log/sell.log
+#  level:
+#    com.example.demo.LoggerTest: debug

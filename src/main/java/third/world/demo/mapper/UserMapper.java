@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import third.world.demo.model.User;
 
+import java.util.List;
+
 /**
  * @Author WangXiao
  * @Description TODO
@@ -12,4 +14,6 @@ import third.world.demo.model.User;
 @Repository
 public interface UserMapper {
     public void insert(@Param("user") User user);
+
+     List<User> select(int userId);
 }
