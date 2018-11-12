@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?> <!--schema约束-->
 <beans xmlns="http://www.springframework.org/schema/beans"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    xmlns:aop="http://www.springframework.org/schema/aop"  xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!--aop的约束-->
 
     <!-- bean常用属性：
     1.id ：名称（根据id值得到配置对象 可以为任意名 不能包含特殊符号，如_ *）
@@ -13,52 +15,70 @@
     -->
 
     <!-- ioc (最常用，下面两种了解即可)-->
-    <bean id="user" class="third.world.demo.bottom.principle.spring.ioc.User"></bean>
+    <!--<bean id="user" class="third.world.demo.bottom.principle.spring.ioc.User"></bean>-->
 
-    <!-- 静态工厂 -->
-    <bean id="anoUser" class="third.world.demo.bottom.principle.spring.ioc.UserFactory" factory-method="getBean"></bean>
+    <!--&lt;!&ndash; 静态工厂 &ndash;&gt;-->
+    <!--<bean id="anoUser" class="third.world.demo.bottom.principle.spring.ioc.UserFactory" factory-method="getBean"></bean>-->
 
-    <!--实例工厂创建对象-->
-    <!-- 创建工厂对象-->
-    <bean id = "beanFactory" class="third.world.demo.bottom.principle.spring.ioc.UserFactoryIn"></bean>
-    <bean id="thirdUser" factory-bean="beanFactory" factory-method="getBean"></bean>
+    <!--&lt;!&ndash;实例工厂创建对象&ndash;&gt;-->
+    <!--&lt;!&ndash; 创建工厂对象&ndash;&gt;-->
+    <!--<bean id = "beanFactory" class="third.world.demo.bottom.principle.spring.ioc.UserFactoryIn"></bean>-->
+    <!--<bean id="thirdUser" factory-bean="beanFactory" factory-method="getBean"></bean>-->
 
-    <!-- 构造函数实现属性注入 -->
-    <bean id="person" class="third.world.demo.bottom.principle.spring.ioc.property.Person">
-        <constructor-arg value="Loki"></constructor-arg>
-    </bean>
+    <!--&lt;!&ndash; 构造函数实现属性注入 &ndash;&gt;-->
+    <!--<bean id="person" class="third.world.demo.bottom.principle.spring.ioc.property.Person">-->
+        <!--<constructor-arg value="Loki"></constructor-arg>-->
+    <!--</bean>-->
 
-    <bean id="diff" class="third.world.demo.bottom.principle.spring.ioc.Difficult.Diff">
-        <property name="arr">
-            <array>
-                <value>测试1</value>
-                <value>测试2</value>
-                <value>测试3</value>
-            </array>
-        </property>
+    <!--<bean id="diff" class="third.world.demo.bottom.principle.spring.ioc.Difficult.Diff">-->
+        <!--<property name="arr">-->
+            <!--<array>-->
+                <!--<value>测试1</value>-->
+                <!--<value>测试2</value>-->
+                <!--<value>测试3</value>-->
+            <!--</array>-->
+        <!--</property>-->
 
 
-        <property name="list">
-            <list>
-                <value>1</value>
-                <value>2</value>
-                <value>3</value>
-            </list>
-        </property>
+        <!--<property name="list">-->
+            <!--<list>-->
+                <!--<value>1</value>-->
+                <!--<value>2</value>-->
+                <!--<value>3</value>-->
+            <!--</list>-->
+        <!--</property>-->
 
-        <property name="map">
-            <map>
-                <entry key="index1" value="1"></entry>
-                <entry key="index2" value="2"></entry>
-                <entry key="index3" value="3"></entry>
-            </map>
-        </property>
+        <!--<property name="map">-->
+            <!--<map>-->
+                <!--<entry key="index1" value="1"></entry>-->
+                <!--<entry key="index2" value="2"></entry>-->
+                <!--<entry key="index3" value="3"></entry>-->
+            <!--</map>-->
+        <!--</property>-->
 
-        <property name="properties">
-            <props>
-                <prop key="driver">111111112</prop>
-                <prop key="driver2">111111113</prop>
-            </props>
-        </property>
-    </bean>
+        <!--<property name="properties">-->
+            <!--<props>-->
+                <!--<prop key="driver">111111112</prop>-->
+                <!--<prop key="driver2">111111113</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <bean id="normalService" class="third.world.demo.bottom.principle.spring.ioc.aop.NormalService"></bean>
+
+    <!--2.配置aop操作-->
+    <aop:config>
+        <!--2.1配置切入点-->
+        <aop:pointcut id="pointcut1" expression="execution(* third.world.demo.bottom.principle.spring.ioc.aop.*.*(..))"></aop:pointcut>
+
+        <!-- 2.2 配置切面
+         把增强用到方法上面-->
+        <aop:aspect ref="normalService">
+            <!--配置增强类型
+                method：增强类里面使用哪个方法作前置-->
+            <aop:before method="before1" pointcut-ref="pointcut1"/>
+
+            <aop:after method="after1" pointcut-ref="pointcut1"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
