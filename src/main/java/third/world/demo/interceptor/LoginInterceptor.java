@@ -6,6 +6,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import third.world.demo.annotation.AuthCheck;
 
+import javax.security.auth.message.AuthException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,9 +43,16 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(authCheck!=null){
             authToken = request.getParameter("authToken");
             if(StringUtils.isBlank(authToken)){
-                throw new
+                throw new AuthException("权限受限");
+            }else {
+                //查表/redis
+//                AuthToken authToken = xxService.quert("authToken");
+//                if(authToken==null){
+//                    throw new AuthException("权限错误");
+//                }
             }
         }
+        return true;
     }
 
     /**
