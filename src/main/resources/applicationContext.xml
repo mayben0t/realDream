@@ -65,20 +65,23 @@
     <!--</bean>-->
 
     <bean id="normalService" class="third.world.demo.bottom.principle.spring.ioc.aop.NormalService"></bean>
+<bean id="real" class="third.world.demo.bottom.principle.spring.ioc.aop.advice.AopTest"></bean>
 
     <!--2.配置aop操作-->
     <aop:config>
         <!--2.1配置切入点-->
-        <aop:pointcut id="pointcut1" expression="execution(* third.world.demo.bottom.principle.spring.ioc.aop.*.*(..))"></aop:pointcut>
+        <aop:pointcut id="pointcut1" expression="execution(* third.world.demo.bottom.principle.spring.ioc.aop.NormalService.*(..))"></aop:pointcut>
 
         <!-- 2.2 配置切面
          把增强用到方法上面-->
-        <aop:aspect ref="normalService">
+        <aop:aspect ref="real">
             <!--配置增强类型
                 method：增强类里面使用哪个方法作前置-->
             <aop:before method="before1" pointcut-ref="pointcut1"/>
 
             <aop:after method="after1" pointcut-ref="pointcut1"/>
+
+            <aop:around method="round1" pointcut-ref="pointcut1"/>
         </aop:aspect>
     </aop:config>
 </beans>
