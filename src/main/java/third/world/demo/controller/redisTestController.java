@@ -29,7 +29,7 @@ public class redisTestController {
         redisService.add("set","val");
         sb.append("set=").append(redisService.setMembers("set").toString()).append(",");
         redisService.zAdd("zset","val1",1);
-        redisService.zAdd("zset","val2",2);
+        redisService.zAdd("zset","wxxxxxxxxxxxxx",2);
         sb.append("zset=").append(redisService.rangeByScore("zset",1,2)).append(",");
         return sb.toString();
     }
