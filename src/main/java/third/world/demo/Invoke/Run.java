@@ -14,6 +14,9 @@ public class Run {
         Object o = c.newInstance();
         Method m1 = c.getMethod("getName");
 
-        System.out.print((String)m1.invoke(o));
+        System.out.println((String)m1.invoke(o));
+        Person p = new Person();
+        p.setName("wang");
+        System.out.println((String)m1.invoke(p));
     }
 }
