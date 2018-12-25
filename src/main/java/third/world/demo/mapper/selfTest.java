@@ -28,9 +28,5 @@ public class selfTest {
 
     @Test
     public void test(){
-        List<User> temp= userMapper.select(1);
-        for(User u:temp){
-            System.out.print("xxxxxxxxxxxx "+u.getName()+u.getUserId());
-        }
     }
 }
