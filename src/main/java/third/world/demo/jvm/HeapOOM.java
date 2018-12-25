@@ -1,5 +1,12 @@
 package third.world.demo.jvm;
 
+import org.springframework.cglib.proxy.Enhancer;
+import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,28 +17,14 @@ import java.util.List;
  * @create: 2018-12-18 21:03
  **/
 public class HeapOOM {
-//    static class OOMObject{}
-    private int stackLength = 1;
-
-    public void stackLeak(){
-        stackLength++;
-        stackLeak();
-    }
-
+    private static final int _1MB = 1024*1024;
     public static void main(String[] args)throws Throwable{
-//        HeapOOM h = new HeapOOM();
-//        try {
-//            h.stackLeak();
-//        }catch (Throwable e){
-//            System.out.println("cccccccccccccc stack length:"+h.stackLength);
-//            throw e;
-//        }
-//        List<OOMObject> list = new ArrayList<>();
-//        while (true){
-//            list.add(new OOMObject());
-//        }
-String c= "ja";
-        String b = new StringBuilder("ja").toString();
-        System.out.println(b.intern()==c);
+        Field unsafeField = Unsafe.class.getDeclaredFields()[0];
+        unsafeField.setAccessible(true);
+        Unsafe unsafe = (Unsafe)unsafeField.get(null);
+        while (true){
+            unsafe.allocateMemory(_1MB);
+        }
     }
+
 }
