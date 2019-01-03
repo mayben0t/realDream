@@ -1,7 +1,9 @@
 package third.world.demo.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -314,5 +316,14 @@ public class User implements Serializable {
      */
     public void setIp(String ip) {
         this.ip = ip;
+    }
+
+
+
+
+    public static void main(String[] args){
+        String a ="aasdasd.adsad";
+        int b =a.indexOf(".");
+        System.out.print(a.substring(0,b));
     }
 }

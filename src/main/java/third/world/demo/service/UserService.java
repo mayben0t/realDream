@@ -14,15 +14,15 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserService {
-    @Autowired
-    UserMapper userMapper;
+//    @Autowired
+//    UserMapper userMapper;
 
 
-    public void insert(User user){
-        userMapper.insert(user);
-    }
-
-    public List<User> select(int userId){
-        return userMapper.select(userId);
-    }
+//    public void insert(User user){
+//        userMapper.insert(user);
+//    }
+//
+//    public List<User> select(int userId){
+//        return userMapper.select(userId);
+//    }
 }

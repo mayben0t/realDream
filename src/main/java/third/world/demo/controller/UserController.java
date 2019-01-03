@@ -19,27 +19,27 @@ import java.util.List;
 @RequestMapping("/user")
 @RestController
 public class UserController {
-    @Autowired
-    UserService userService;
-
-
-    @PostMapping
-    public ResultTO insert(User user){
-        ResultTO result = new ResultTO();
-        try {
-            userService.insert(user);
-        }catch (Exception e){
-
-        }
-        return result;
-    }
-
-
-    @GetMapping
-    public ResultTO select(int userId){
-        ResultTO<List<User>> result = new ResultTO();
-        result.setResult(userService.select(userId));
-        return result;
-    }
+//    @Autowired
+//    UserService userService;
+//
+//
+//    @PostMapping
+//    public ResultTO insert(User user){
+//        ResultTO result = new ResultTO();
+//        try {
+//            userService.insert(user);
+//        }catch (Exception e){
+//
+//        }
+//        return result;
+//    }
+//
+//
+//    @GetMapping
+//    public ResultTO select(int userId){
+//        ResultTO<List<User>> result = new ResultTO();
+//        result.setResult(userService.select(userId));
+//        return result;
+//    }
 
 }
