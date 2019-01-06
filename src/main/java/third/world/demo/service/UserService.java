@@ -14,15 +14,24 @@ import java.util.List;
  **/
 @Service("userService")
 public class UserService {
-//    @Autowired
-//    UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
+
+    public void insert(User record){
+        userMapper.insert(record);
+    }
+
+    public void delete(Integer id){
+        userMapper.deleteByPrimaryKey(id);
+    }
+
+    public void update(User record){
+        userMapper.updateByPrimaryKey(record);
+    }
+
+    public List<User> query(){
+        return userMapper.select();
+    }
 
 
-//    public void insert(User user){
-//        userMapper.insert(user);
-//    }
-//
-//    public List<User> select(int userId){
-//        return userMapper.select(userId);
-//    }
 }

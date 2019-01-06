@@ -330,4 +330,8 @@
       ip = #{ip,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="select" resultType="third.world.demo.model.User">
+    select * from user
+  </select>
 </mapper>
