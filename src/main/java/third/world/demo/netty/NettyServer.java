@@ -26,6 +26,6 @@ public class NettyServer {
                     }
                 });
 
-        serverBootstrap.bind(8084);
+        serverBootstrap.bind(8086);
     }
 }

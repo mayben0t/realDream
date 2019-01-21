@@ -1,4 +1,4 @@
-package third.world.demo.netty.one;
+package third.world.demo.netty.real;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -37,4 +37,13 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         cause.printStackTrace();
         ctx.close();
     }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        super.handlerRemoved(ctx);
+    }
+
+//    public static void main(String[] args) {
+//
+//    }
 }

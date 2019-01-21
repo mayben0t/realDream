@@ -1,4 +1,4 @@
-package third.world.demo.netty.one;
+package third.world.demo.netty.real;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -31,7 +31,7 @@ public class EchoClient {
             Bootstrap b = new Bootstrap();
             b.group(group)
                     .channel(NioSocketChannel.class)
-                    .remoteAddress(new InetSocketAddress(host,port))
+                    .remoteAddress(new InetSocketAddress("localhost",9000))
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
@@ -47,12 +47,12 @@ public class EchoClient {
 
 
     public static void main(String[] args) throws  Exception{
-        if(args.length!=2){
-            System.err.println("Usage: "+EchoClient.class.getSimpleName()+" <host><port>");
-            return;
-        }
-        String host = args[0];
-        int port = Integer.parseInt(args[1]);
+//        if(args.length!=2){
+//            System.err.println("Usage: "+EchoClient.class.getSimpleName()+" <host><port>");
+//            return;
+//        }
+        String host = "localhost";
+        int port = 9000;
         new EchoClient(host,port).start();
     }
 }

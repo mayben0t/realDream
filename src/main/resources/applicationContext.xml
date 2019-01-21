@@ -15,7 +15,7 @@
     -->
 
     <!-- ioc (最常用，下面两种了解即可)-->
-    <!--<bean id="user" class="third.world.demo.bottom.principle.spring.ioc.User"></bean>-->
+    <!--<bean id="user" class="third.world.demo.bottom.principle.spring.ioc.UserX"></bean>-->
 
     <!--&lt;!&ndash; 静态工厂 &ndash;&gt;-->
     <!--<bean id="anoUser" class="third.world.demo.bottom.principle.spring.ioc.UserFactory" factory-method="getBean"></bean>-->

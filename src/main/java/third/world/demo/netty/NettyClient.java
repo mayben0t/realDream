@@ -29,7 +29,7 @@ public class NettyClient {
                     }
                 });
         // 4.建立连接
-        bootstrap.connect("127.0.0.1", 8084).addListener(future -> {
+        bootstrap.connect("127.0.0.1", 8086).addListener(future -> {
             if (future.isSuccess()) {
                 System.out.println("连接成功!");
             } else {
