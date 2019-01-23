@@ -15,9 +15,9 @@ import io.netty.util.CharsetUtil;
 public class ServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.println("尽力了");
+//        System.out.println("尽力了");
 //        ctx.writeAndFlush(msg);
-        System.out.println("server received: "+msg);
+        System.out.println("来自[ "+ctx.channel().remoteAddress()+" ]:"+msg);
     }
 
 //    @Override
