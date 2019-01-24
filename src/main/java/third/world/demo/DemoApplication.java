@@ -28,7 +28,6 @@ public class DemoApplication {
         mailSender.setHost("smtp.qq.com");//指定用来发送Email的邮件服务器主机名
         mailSender.setPort(465);//默认端口，标准的SMTP端口
         mailSender.setUsername("594180536@qq.com");//用户名
-        mailSender.setPassword("android2018");//密码
         return mailSender;
     }
 }
