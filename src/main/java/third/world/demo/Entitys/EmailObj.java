@@ -1,9 +1,18 @@
 package third.world.demo.Entitys;
 
 public class EmailObj {
+    private Long id;
     private String email;
     private String subject;
     private String text;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return email;
@@ -32,7 +41,8 @@ public class EmailObj {
     @Override
     public String toString() {
         return "EmailObj{" +
-                "email='" + email + '\'' +
+                "id=" + id +
+                ", email='" + email + '\'' +
                 ", subject='" + subject + '\'' +
                 ", text='" + text + '\'' +
                 '}';
