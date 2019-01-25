@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import third.world.demo.Entitys.EmailObj;
+import third.world.demo.dto.ResultTO;
 
 import java.util.Map;
 import java.util.Properties;
@@ -23,7 +24,8 @@ import java.util.Properties;
 public class Mail {
 
     @GetMapping("/test")
-    public String sendSimpleEmail(EmailObj emailObject){
+    public ResultTO sendSimpleEmail(EmailObj emailObject){
+        ResultTO result = new ResultTO();
         try {
             // 获取参数
             System.out.println(emailObject.getEmail());
@@ -50,10 +52,16 @@ public class Mail {
             message.setText(emailObject.getText());//正文
             mailSender.send(message);
             System.out.println("邮件发送完毕");
-            return "成功";
+            result.setCode(200);
+            result.setMsg("发送邮箱成功！");
+            result.setSuccess(true);
+            return result;
         }catch (Exception e){
             e.printStackTrace();
-            return "失败";
+            result.setCode(e.hashCode());
+            result.setMsg(e.getMessage());
+            result.setSuccess(false);
+            return result;
         }
     }
 
