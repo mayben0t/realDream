@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    测试页面
+    发送邮箱：<input type="text" id="emailName">
+    主题：<input type="text" id="subject">
+    文本：<input type="text" id="content">
+    <button onclick="postEmail()">发送</button>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function postEmail() {
+            if(!document.getElementById("emailName").value) {
+                alert("邮箱必填")
+                return;
+            }
+
+            var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+            if(!reg.test(document.getElementById("emailName").value)) {
+                alert("邮箱格式不对")
+                return;
+            }
+
+            if(!document.getElementById("subject").value) {
+                alert("主题必填")
+                return;
+            }
+            if(!document.getElementById("content").value) {
+                alert("文本必填")
+                return;
+            }
+
+            var data = {
+                email: document.getElementById("emailName").value,
+                subject: document.getElementById("subject").value,
+                text: document.getElementById("content").value
+            };
+
+            $.ajax({
+                url: "/email/test",
+                type: "GET",
+                data: data,
+                success: function (data) {
+                    console.log(data)
+                }
+            })
+        }
+    </script>
+</body>
+</html>

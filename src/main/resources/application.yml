@@ -6,6 +6,12 @@ spring:
     url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false
     username: root
     password: 123456
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
 #  jpa:
 #    hibernate:
 #      ddl-auto: update
@@ -13,6 +19,8 @@ spring:
 #    properties:
 #      hibernate:
 #        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+
 mybatis:
   mapper-locations: classpath:mybatis/*Mapper.xml
   type-aliases-package: thrid.world.demo
