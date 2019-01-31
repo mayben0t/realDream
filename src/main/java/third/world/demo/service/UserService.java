@@ -1,6 +1,8 @@
 package third.world.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import third.world.demo.mapper.UserMapper;
 import third.world.demo.model.User;
@@ -21,6 +23,7 @@ public class UserService {
         userMapper.insert(record);
     }
 
+    @CacheEvict(value = "user")
     public void delete(Integer id){
         userMapper.deleteByPrimaryKey(id);
     }
@@ -29,6 +32,7 @@ public class UserService {
         userMapper.updateByPrimaryKey(record);
     }
 
+    @Cacheable(value = "user",key = "")
     public List<User> query(){
         return userMapper.select();
     }
