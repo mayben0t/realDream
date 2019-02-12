@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import third.world.demo.service.redis.service.RedisService;
 
+import javax.servlet.http.Cookie;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @program: demo
  * @description:
@@ -31,6 +34,9 @@ public class redisTestController {
         redisService.zAdd("zset","val1",1);
         redisService.zAdd("zset","wxxxxxxxxxxxxx",2);
         sb.append("zset=").append(redisService.rangeByScore("zset",1,2)).append(",");
+
         return sb.toString();
     }
+
+
 }

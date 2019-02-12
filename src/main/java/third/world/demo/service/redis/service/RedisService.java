@@ -47,8 +47,8 @@ public class RedisService {
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
             operations.set(key, value);
-            redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
-            result = true;
+            result =  redisTemplate.expire(key, expireTime, TimeUnit.SECONDS);
+//              true;
         } catch (Exception e) {
             e.printStackTrace();
         }

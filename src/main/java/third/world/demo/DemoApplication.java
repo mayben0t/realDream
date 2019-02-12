@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.client.RestTemplate;
 
 @MapperScan(value = "third.world.demo.mapper")
 @SpringBootApplication
@@ -32,4 +34,15 @@ public class DemoApplication {
         mailSender.setUsername("594180536@qq.com");//用户名
         return mailSender;
     }
+
+    @Bean
+    @Scope("singleton")
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
+
+//    @Bean
+//    public @interface authTest(){
+//        return new authTest();
+//    }
 }
