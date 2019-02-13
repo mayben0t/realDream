@@ -2,6 +2,8 @@ package third.world.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +16,15 @@ import java.util.concurrent.Executors;
 
 @RestController
 public class Hello {
-//    private Logger logger = LoggerFactory.getLogger(Hello.class);
+    private Logger logger = LoggerFactory.getLogger(Hello.class);
 
     @Autowired
     WebApplicationContext webApplicationContext;
 
     static int x;
+
+    @Value("${testValue}")
+    private Integer test;
 
     @RequestMapping("/hello")
     public void hello(){
@@ -46,16 +51,8 @@ public class Hello {
         }
     }
 
-    public static void main(String[] args) {
-        ExecutorService pool = Executors.newFixedThreadPool(100);
-        while(true){
-        pool.execute(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println(++x);
-                    }
-                }
-        );
+    @GetMapping("/cct")
+    public Integer ca(){
+        return test;
     }
-}}
+}
