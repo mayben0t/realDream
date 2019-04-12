@@ -20,6 +20,7 @@ public class ExceptionHandler {
     public ResultTO res(CommonException exception){
         ResultTO resultTO = new ResultTO();
         resultTO.setCode(500);
+        resultTO.setSuccess(false);
         resultTO.setResult(exception.getMsg());
         return resultTO;
     }
@@ -29,6 +30,7 @@ public class ExceptionHandler {
     public ResultTO res(Throwable exception){
         ResultTO resultTO = new ResultTO();
         resultTO.setCode(500);
+        resultTO.setSuccess(false);
         resultTO.setResult(exception.getMessage());
         return resultTO;
     }
