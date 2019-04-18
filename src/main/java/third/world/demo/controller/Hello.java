@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.WebApplicationContext;
+import third.world.demo.service.redis.service.SelfRedis;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,17 +24,22 @@ public class Hello {
     @Autowired
     WebApplicationContext webApplicationContext;
 
+    @Autowired
+    SelfRedis selfRedis;
+
     static int x;
 
     @Value("${testValue}")
     private Integer test;
 
     @RequestMapping("/hello")
-    public void hello(){
+    @TTest
+    public void hello(String name){
 //    logger.info("this is log");
 //        return "hello world";
-        ServletContext s= webApplicationContext.getServletContext();
-        System.out.println(s.getContextPath());
+//        ServletContext s= webApplicationContext.getServletContext();
+//        System.out.println(s.getContextPath());
+        selfRedis.test();
     }
 
     class test implements FactoryBean{
@@ -54,5 +62,11 @@ public class Hello {
     @GetMapping("/cct")
     public Integer ca(){
         return test;
+    }
+
+    @GetMapping("/tat")
+    public String te(HttpServletRequest request,HttpServletResponse response){
+        request.getSession(true);
+        return request.getSession().getId();
     }
 }
