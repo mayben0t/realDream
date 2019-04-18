@@ -13,6 +13,9 @@ public class PageTO {
 
 
     public int getTotal() {
+        int i=0;
+        String s;
+        System.out.println("cc");
         return total;
     }
 
